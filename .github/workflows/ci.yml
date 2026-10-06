@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_wrapper: false
+
+      - run: go build ./...
+
+      - run: go vet ./...
+
+      - name: Check generated docs
+        run: |
+          go generate ./...
+          git diff --exit-code docs
+
+      - run: terraform fmt -recursive -check examples
+
+  release:
+    needs: build
+    if: github.repository == 'casdoor/terraform-provider-casdoor' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+
+      - id: semantic
+        uses: cycjimmy/semantic-release-action@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: gpg
+        if: steps.semantic.outputs.new_release_published == 'true'
+        uses: crazy-max/ghaction-import-gpg@v7
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+
+      - name: Write release notes
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: printf '%s\n' "$RELEASE_NOTES" > "$RUNNER_TEMP/release-notes.md"
+        env:
+          RELEASE_NOTES: ${{ steps.semantic.outputs.new_release_notes }}
+
+      - if: steps.semantic.outputs.new_release_published == 'true'
+        uses: goreleaser/goreleaser-action@v7
+        with:
+          version: "~> v2"
+          args: release --clean --release-notes ${{ runner.temp }}/release-notes.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GPG_FINGERPRINT: ${{ steps.gpg.outputs.fingerprint }}
