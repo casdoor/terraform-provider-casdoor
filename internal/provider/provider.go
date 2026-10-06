@@ -51,7 +51,7 @@ func (p *casdoorProvider) Metadata(_ context.Context, _ provider.MetadataRequest
 
 func (p *casdoorProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		MarkdownDescription: "The Casdoor provider manages the objects of a [Casdoor](https://casdoor.org) server: organizations, applications, users, providers, certs, roles, permissions and groups.\n\n" +
+		MarkdownDescription: "The Casdoor provider manages the objects of a [Casdoor](https://casdoor.ai) server: organizations, applications, users, providers, certs, roles, permissions and groups. See the [Terraform guide](https://casdoor.ai/docs/deployment/terraform) for an overview.\n\n" +
 			"The provider calls the Casdoor API as an application, using its client ID and client secret. To manage every organization, use an application of the `built-in` organization, e.g. `app-built-in`.",
 		Attributes: map[string]schema.Attribute{
 			"endpoint": schema.StringAttribute{

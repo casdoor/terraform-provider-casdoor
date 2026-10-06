@@ -1,10 +1,12 @@
 # Terraform Provider for Casdoor
 
 [![CI](https://github.com/casdoor/terraform-provider-casdoor/actions/workflows/ci.yml/badge.svg)](https://github.com/casdoor/terraform-provider-casdoor/actions/workflows/ci.yml)
+[![Terraform Registry](https://img.shields.io/badge/terraform-casdoor%2Fcasdoor-844FBA?logo=terraform)](https://registry.terraform.io/providers/casdoor/casdoor)
 
-The official Terraform provider for [Casdoor](https://casdoor.org), an open-source IAM / SSO platform. It manages organizations, applications, users, providers, certs, roles, permissions and groups as code.
+The official Terraform provider for [Casdoor](https://casdoor.ai), an open-source IAM / SSO platform. It manages organizations, applications, users, providers, certs, roles, permissions and groups as code.
 
-Documentation: [registry.terraform.io/providers/casdoor/casdoor](https://registry.terraform.io/providers/casdoor/casdoor/latest/docs)
+- Provider documentation: [registry.terraform.io/providers/casdoor/casdoor](https://registry.terraform.io/providers/casdoor/casdoor/latest/docs)
+- Guide: [Terraform on casdoor.ai](https://casdoor.ai/docs/deployment/terraform)
 
 ## Usage
 
