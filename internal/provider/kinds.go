@@ -76,6 +76,8 @@ var objectKinds = []objectKind{
 			float("expire_in_hours", "expireInHours", "The lifetime of the access token, in hours."),
 			float("refresh_expire_in_hours", "refreshExpireInHours", "The lifetime of the refresh token, in hours."),
 			integer("cookie_expire_in_hours", "cookieExpireInHours", "The lifetime of the sign-in session cookie, in hours."),
+			integer("failed_signin_limit", "failedSigninLimit", "The number of failed sign-in attempts after which the user is frozen, 0 means the default of 5."),
+			integer("failed_signin_frozen_time", "failedSigninFrozenTime", "The number of minutes a user stays frozen after reaching the limit, 0 means the default of 15."),
 			str("default_group", "defaultGroup", "The group that new users are added to at sign-up."),
 			boolean("enable_password", "enablePassword", "Whether users can sign in with a password."),
 			boolean("enable_sign_up", "enableSignUp", "Whether users can sign up."),

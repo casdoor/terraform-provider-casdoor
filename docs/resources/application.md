@@ -74,6 +74,8 @@ output "portal_client_secret" {
 - `enable_signin_session` (Boolean) Whether the sign-in session is kept in a cookie.
 - `enable_web_authn` (Boolean) Whether users can sign in with WebAuthn.
 - `expire_in_hours` (Number) The lifetime of the access token, in hours.
+- `failed_signin_frozen_time` (Number) The number of minutes a user stays frozen after reaching the limit, 0 means the default of 15.
+- `failed_signin_limit` (Number) The number of failed sign-in attempts after which the user is frozen, 0 means the default of 5.
 - `forget_url` (String) A custom forgot-password page URL.
 - `grant_types` (List of String) The allowed OAuth grant types, e.g. `authorization_code`, `password`, `client_credentials`, `token`, `refresh_token`.
 - `homepage_url` (String) The homepage URL.
