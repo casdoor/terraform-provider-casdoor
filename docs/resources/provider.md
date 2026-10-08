@@ -52,11 +52,15 @@ resource "casdoor_provider" "smtp" {
 
 - `app_id` (String) The app ID, used by some providers.
 - `bucket` (String) The bucket of a storage service.
+- `cert` (String) The name of the cert, used by some providers.
 - `client_id` (String) The client ID, app key or username, depending on the type.
+- `client_id2` (String) The second client ID, used by some providers.
 - `client_secret` (String, Sensitive) The client secret, app secret or password, depending on the type.
+- `client_secret2` (String, Sensitive) The second client secret, used by some providers.
 - `content` (String) The email body or the content of the provider.
 - `custom_auth_url` (String) The authorization URL of a custom OAuth provider.
 - `custom_logo` (String) The logo URL of a custom provider.
+- `custom_logout_url` (String) The logout URL of a custom OAuth provider.
 - `custom_token_url` (String) The token URL of a custom OAuth provider.
 - `custom_user_info_url` (String) The user info URL of a custom OAuth provider.
 - `disable_ssl` (Boolean) Whether SSL is disabled.
@@ -64,8 +68,12 @@ resource "casdoor_provider" "smtp" {
 - `domain` (String) The domain or base URL of the service.
 - `email_regex` (String) Only emails matching this regular expression can sign in with the provider.
 - `enable_pkce` (Boolean) Whether PKCE is used.
+- `enable_proxy` (Boolean) Whether requests to the provider go through the proxy configured in Casdoor.
+- `enable_sign_authn_request` (Boolean) Whether the SAML authentication request is signed.
 - `endpoint` (String) The endpoint of the service.
 - `host` (String) The host, e.g. of an SMTP server.
+- `http_headers` (Map of String) The HTTP headers sent by a custom HTTP email or SMS provider.
+- `idp` (String) The certificate of the SAML IdP.
 - `intranet_endpoint` (String) The intranet endpoint of a storage service.
 - `issuer_url` (String) The issuer URL.
 - `metadata` (String) The SAML IdP metadata.
@@ -76,8 +84,11 @@ resource "casdoor_provider" "smtp" {
 - `provider_url` (String) The URL of the provider's console.
 - `receiver` (String) The test receiver.
 - `region_id` (String) The region ID.
+- `require_message_authenticator` (Boolean) Whether a RADIUS provider requires the Message-Authenticator attribute.
 - `scopes` (String) The OAuth scopes, separated by spaces.
 - `sign_name` (String) The SMS signature name.
+- `ssl_mode` (String) The SSL mode of an email provider: `Auto`, `Enable` or `Disable`. Takes precedence over `disable_ssl`.
+- `state` (String) The state of the provider, `Enabled` or `Disabled`.
 - `sub_type` (String) The sub-type, used by some providers.
 - `template_code` (String) The SMS template code.
 - `title` (String) The email subject.

@@ -39,10 +39,12 @@ resource "casdoor_group" "engineering" {
 
 - `contact_email` (String) The contact email.
 - `display_name` (String) The display name.
+- `gid_number` (Number) The POSIX GID published by the built-in LDAP server, 0 when not assigned.
 - `is_enabled` (Boolean) Whether the group is enabled.
 - `is_top_group` (Boolean) Whether the group is a top-level group.
 - `manager` (String) The manager of the group.
 - `parent_id` (String) The name of the parent group, or the organization name for a top-level group.
+- `properties` (Map of String) Custom properties.
 - `type` (String) The type, `Virtual` or `Physical`.
 
 ### Read-Only

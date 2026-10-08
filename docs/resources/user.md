@@ -45,31 +45,45 @@ variable "alice_password" {
 
 ### Optional
 
+- `address` (List of String) The address lines.
 - `affiliation` (String) The affiliation.
 - `avatar` (String) The avatar URL.
 - `bio` (String) The bio.
 - `birthday` (String) The birthday.
 - `country_code` (String) The country code of the phone number, e.g. `US`.
 - `display_name` (String) The display name.
+- `education` (String) The education.
 - `email` (String) The email address.
 - `email_verified` (Boolean) Whether the email address is verified.
+- `external_id` (String) The ID of the user in an external system.
 - `first_name` (String) The first name.
 - `gender` (String) The gender.
 - `groups` (List of String) The groups of the user, in the `organization/group` format.
 - `homepage` (String) The homepage URL.
+- `id_card` (String) The ID card number.
+- `id_card_type` (String) The type of the ID card.
+- `ip_whitelist` (String) The IP addresses or CIDRs the user can sign in from, separated by commas.
 - `is_admin` (Boolean) Whether the user is an administrator of the organization.
+- `is_deleted` (Boolean) Whether the user is marked as deleted.
 - `is_forbidden` (Boolean) Whether the user is forbidden to sign in.
+- `is_verified` (Boolean) Whether the real name is verified.
+- `karma` (Number) The karma.
 - `language` (String) The language.
 - `last_name` (String) The last name.
 - `location` (String) The location.
+- `need_update_password` (Boolean) Whether the user must change the password at the next sign-in.
 - `password` (String, Sensitive) The password. Casdoor never returns it, so changes made outside of Terraform are not detected.
 - `phone` (String) The phone number, without the country calling code.
 - `properties` (Map of String) Custom properties.
+- `ranking` (Number) The ranking.
+- `real_name` (String) The real name.
 - `region` (String) The region.
+- `score` (Number) The score.
 - `signup_application` (String) The application that the user signed up with.
 - `tag` (String) The tag.
 - `title` (String) The title.
 - `type` (String) The user type, e.g. `normal-user`.
+- `uid_number` (Number) The POSIX UID published by the built-in LDAP server, 0 when not assigned.
 
 ### Read-Only
 

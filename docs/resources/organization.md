@@ -36,33 +36,71 @@ resource "casdoor_organization" "acme" {
 ### Optional
 
 - `country_codes` (List of String) The country codes allowed for phone numbers, e.g. `US`, `CN`.
+- `dcr_policy` (String) The policy of OAuth dynamic client registration: `open` or `disabled`.
 - `default_application` (String) The application used when signing in to the organization without an application.
 - `default_avatar` (String) The default avatar URL of new users.
 - `default_password` (String, Sensitive) The default password of users added without a password.
+- `default_token_fields` (List of String) The token fields of applications created by dynamic client registration.
+- `default_token_format` (String) The token format of applications created by dynamic client registration.
+- `disable_console` (Boolean) Whether the users of the organization are kept out of the Casdoor console.
 - `disable_signin` (Boolean) Whether signing in to the organization is disabled.
 - `display_name` (String) The display name.
+- `enable_exclusive_signin` (Boolean) Whether a new sign-in signs the user out of the other sessions.
+- `enable_ldap_password` (Boolean) Whether the built-in LDAP server accepts password changes.
+- `enable_radius` (Boolean) Whether the built-in RADIUS server serves the organization.
 - `enable_soft_deletion` (Boolean) Whether deleted users are only marked as deleted.
+- `enable_tour` (Boolean) Whether the guided tour of the console is shown.
 - `favicon` (String) The favicon URL.
+- `has_privilege_consent` (Boolean) Whether users other than `admin` can be added to the `built-in` organization.
 - `init_score` (Number) The initial score of new users.
 - `ip_whitelist` (String) The IP addresses or CIDRs allowed to sign in, separated by commas.
 - `is_profile_public` (Boolean) Whether user profiles are visible to other users.
+- `kerberos_kdc_host` (String) The host of the Kerberos KDC.
+- `kerberos_keytab` (String, Sensitive) The Base64-encoded Kerberos keytab.
+- `kerberos_realm` (String) The Kerberos realm.
+- `kerberos_service_name` (String) The Kerberos service name.
 - `languages` (List of String) The languages of the UI, e.g. `en`, `zh`.
+- `ldap_attributes` (List of String) The user attributes published by the built-in LDAP server.
 - `logo` (String) The logo URL.
 - `logo_dark` (String) The logo URL for the dark theme.
 - `master_password` (String, Sensitive) The master password that signs in as any user of the organization.
+- `master_verification_code` (String, Sensitive) The master verification code that passes any verification of the organization.
+- `max_sessions` (Number) The maximum number of concurrent sessions of a user.
+- `mfa_items` (Attributes List) The multi-factor authentication methods and whether they are required. (see [below for nested schema](#nestedatt--mfa_items))
 - `mfa_remember_in_hours` (Number) The number of hours a passed MFA check is remembered.
+- `nav_items` (List of String) The navigation items shown to the admins of the organization, `all` shows everything.
 - `password_expire_days` (Number) The number of days after which a password expires, 0 means never.
+- `password_history_count` (Number) The number of recent passwords, the current one included, that cannot be reused.
+- `password_obfuscator_key` (String, Sensitive) The key used to obfuscate the password.
+- `password_obfuscator_type` (String) How the sign-in page obfuscates the password before sending it: `Plain`, `AES` or `DES`.
 - `password_options` (List of String) The password complexity rules, e.g. `AtLeast6`, `Aa123`, `SpecialChar`, `NoRepeat`.
 - `password_type` (String) How passwords are stored: `plain`, `salt`, `sha512-salt`, `md5-salt`, `bcrypt`, `pbkdf2-salt` or `argon2id`.
+- `record_retention_days` (Number) The number of days audit records are kept, 0 means forever.
 - `tags` (List of String) The user tags.
+- `token_retention_days` (Number) The number of days expired tokens are kept, 0 means the default of 30.
+- `trusted_db_hosts` (String) The database hosts that the organization may connect to, separated by commas.
 - `use_email_as_username` (Boolean) Whether the email is used as the username at sign-up.
+- `use_permanent_avatar` (Boolean) Whether avatars from third-party providers are copied to the storage provider.
+- `user_nav_items` (List of String) The navigation items shown to the users of the organization, `all` shows everything.
 - `user_types` (List of String) The user types.
 - `website_url` (String) The website URL.
+- `widget_items` (List of String) The widgets shown in the header of the console, `all` shows everything.
 
 ### Read-Only
 
 - `created_time` (String) The time when the organization was created.
 - `id` (String) The ID of the organization in the `owner/name` format.
+
+<a id="nestedatt--mfa_items"></a>
+### Nested Schema for `mfa_items`
+
+Required:
+
+- `name` (String) The MFA method, e.g. `Phone`, `Email` or `App`.
+
+Optional:
+
+- `rule` (String) The rule: `Optional`, `Prompted` or `Required`.
 
 ## Import
 

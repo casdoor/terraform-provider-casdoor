@@ -51,6 +51,7 @@ resource "casdoor_permission" "portal_admin" {
 - `resource_type` (String) The resource type, e.g. `Application`, `TreeNode` or `Custom`.
 - `resources` (List of String) The resources.
 - `roles` (List of String) The roles, in the `organization/role` format.
+- `state` (String) The approval state, `Approved` or `Pending`. Only approved permissions take effect.
 - `users` (List of String) The users, in the `organization/user` format.
 
 ### Read-Only

@@ -57,7 +57,7 @@ func modifyObject(client *casdoorsdk.Client, action string, id string, obj map[s
 		return err
 	}
 
-	if resp.Data != "Affected" {
+	if resp.Data == "Unaffected" {
 		return fmt.Errorf("%s %s: no object was affected", action, id)
 	}
 	return nil

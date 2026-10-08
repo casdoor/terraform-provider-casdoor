@@ -3,7 +3,7 @@
 [![CI](https://github.com/casdoor/terraform-provider-casdoor/actions/workflows/ci.yml/badge.svg)](https://github.com/casdoor/terraform-provider-casdoor/actions/workflows/ci.yml)
 [![Terraform Registry](https://img.shields.io/badge/terraform-casdoor%2Fcasdoor-844FBA?logo=terraform)](https://registry.terraform.io/providers/casdoor/casdoor)
 
-The official Terraform provider for [Casdoor](https://casdoor.ai), an open-source IAM / SSO platform. It manages organizations, applications, users, providers, certs, roles, permissions and groups as code.
+The official Terraform provider for [Casdoor](https://casdoor.ai), an open-source IAM / SSO platform. It manages organizations, applications, users, providers, certs, roles, permissions, groups and the other Casdoor objects as code.
 
 - Provider documentation: [registry.terraform.io/providers/casdoor/casdoor](https://registry.terraform.io/providers/casdoor/casdoor/latest/docs)
 - Guide: [Terraform on casdoor.ai](https://casdoor.ai/docs/deployment/terraform)
@@ -41,7 +41,7 @@ The provider calls the Casdoor API with the client ID and client secret of an ap
 
 Only the attributes set in the configuration are written to Casdoor. The other fields of an object keep the values they have in Casdoor, so a resource can manage part of an object that is also edited in the Casdoor UI.
 
-Existing objects can be imported: organizations and applications by name, the other objects by `owner/name`.
+Existing objects can be imported: organizations, applications, syncers and webhooks by name, the other objects by `owner/name`.
 
 ```shell
 terraform import casdoor_organization.acme acme
@@ -60,6 +60,22 @@ terraform import casdoor_user.alice acme/alice
 | `casdoor_role` | Role |
 | `casdoor_permission` | Permission |
 | `casdoor_group` | Group |
+| `casdoor_model` | Model (Casbin model) |
+| `casdoor_adapter` | Adapter (Casbin adapter) |
+| `casdoor_enforcer` | Enforcer (Casbin enforcer) |
+| `casdoor_invitation` | Invitation |
+| `casdoor_syncer` | Syncer |
+| `casdoor_webhook` | Webhook |
+| `casdoor_key` | Key (access key and secret) |
+| `casdoor_product` | Product |
+| `casdoor_plan` | Plan |
+| `casdoor_pricing` | Pricing |
+| `casdoor_subscription` | Subscription |
+| `casdoor_coupon` | Coupon |
+| `casdoor_agent` | Agent |
+| `casdoor_server` | Server (MCP server) |
+| `casdoor_rule` | Rule (WAF rule) |
+| `casdoor_site` | Site (reverse proxy) |
 
 ## Development
 
